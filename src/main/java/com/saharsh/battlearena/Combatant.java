@@ -7,7 +7,7 @@ public class Combatant {
 
 
     public Combatant(String name, int strength, int health) {
-        if (name.isBlank() || name == null) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Name cannot be empty!");
         }
         if (strength < 0) {
