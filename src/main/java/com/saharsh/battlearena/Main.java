@@ -5,10 +5,22 @@ public class Main {
         Combatant fighter = new Combatant("fighter", 50, 300);
         Combatant defender = new Combatant("defender", 30, 400);
 
-        System.out.println(defender.getHealth());
+        while (defender.isAlive() && fighter.isAlive()) {
+            System.out.println("Defender: %d".formatted(defender.getHealth()));
+            System.out.println("Fighter: %d".formatted(fighter.getHealth()));
+            fighter.attack(defender);
 
-        fighter.attack(defender);
-
-        System.out.println(defender.getHealth());
+            if (defender.isAlive()) {
+                defender.attack(fighter);
+            }
+        }
+        System.out.println("Defender: %d".formatted(defender.getHealth()));
+        System.out.println("Fighter: %d".formatted(fighter.getHealth()));
+        
+        if (fighter.getHealth() > 0) {
+            System.out.println("Winner: Fighter");
+        } else {
+            System.out.println("Winner: Defender");
+        }
     }
 }
