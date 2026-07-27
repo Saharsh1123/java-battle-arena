@@ -18,12 +18,14 @@ public class Main {
         }
 
 
-        Combatant fighter = new Combatant(name, 50, 300);
-        Combatant defender = new Combatant("defender", 30, 400);
+        Combatant fighter = new Combatant(name, (int)(Math.random() * 41) + 20, (int)(Math.random() * 401) + 100);
+
+        Combatant defender = new Combatant("defender", (int)(Math.random() * 41) + 20, (int)(Math.random() * 401) + 100);
+
 
         while (defender.isAlive() && fighter.isAlive()) {
             System.out.println("Defender: %d".formatted(defender.getHealth()));
-            System.out.println("%s: %d".formatted(name, fighter.getHealth()));
+            System.out.println("%s: %d".formatted(fighter.getName(), fighter.getHealth()));
             fighter.attack(defender);
 
             if (defender.isAlive()) {
@@ -31,10 +33,10 @@ public class Main {
             }
         }
         System.out.println("Defender: %d".formatted(defender.getHealth()));
-        System.out.println("%s: %d".formatted(name, fighter.getHealth()));
+        System.out.println("%s: %d".formatted(fighter.getName(), fighter.getHealth()));
         
-        if (fighter.getHealth() > 0) {
-            System.out.println("Winner: %s".formatted(name));
+        if (fighter.isAlive()) {
+            System.out.println("Winner: %s".formatted(fighter.getName()));
         } else {
             System.out.println("Winner: Defender");
         }
